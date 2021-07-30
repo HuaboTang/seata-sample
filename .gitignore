@@ -2,3 +2,5 @@
 *.iml
 target/
 \.rebel-remote.xml.bak
+
+rebel.xml
