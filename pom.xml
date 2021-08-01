@@ -27,6 +27,7 @@
 
     <modules>
         <module>seata-at</module>
+        <module>seata-tcc-transfer</module>
     </modules>
 
     <dependencyManagement>
