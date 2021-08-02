@@ -1,13 +1,13 @@
-###
+### 正常提交
 POST http://127.0.0.1:8080/order/create/commit
 Content-Type: application/json
 
 
-###
+### 回滚
 POST http://127.0.0.1:8080/order/create/rollback
 Content-Type: application/json
 
 
-###
+### 回滚-在第二个远程调用失败
 POST http://127.0.0.1:8080/order/create/rollback/at/last
 Content-Type: application/json

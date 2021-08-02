@@ -1,1 +1,5 @@
+### 正常
 GET http://127.0.0.1:8080/transfer
+
+### 回滚
+GET http://127.0.0.1:8080/transfer/rollbak
