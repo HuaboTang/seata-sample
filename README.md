@@ -46,6 +46,8 @@ store {
 
 ### 1.2 具体demo
 
-[AT模式](./seata-at)
+[AT模式 seata-at](./seata-at)
 
-[本地TCC模式](./seata-tcc-transfer)
+[本地TCC模式 seata-tcc-transfer](./seata-tcc-transfer)
+
+[远程TCC模式 seata-tcc-spring-cloud](./seata-tcc-spring-cloud)
