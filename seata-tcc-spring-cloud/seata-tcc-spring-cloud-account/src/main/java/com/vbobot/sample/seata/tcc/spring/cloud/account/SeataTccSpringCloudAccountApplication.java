@@ -30,5 +30,11 @@ public class SeataTccSpringCloudAccountApplication implements AccountFeign {
     public void prepareDeductBalance(DeductBalanceParamDTO param) {
         log.info("=====>PrepareDeductBalance, xid:{}", RootContext.getXID());
         deductBalanceAccountAction.prepareDeductBalance(null, param);
+
+//        final BusinessActionContext businessActionContext = new BusinessActionContext();
+//        final HashMap<String, Object> map = Maps.newHashMap();
+//        map.put("deductBalanceParam", JSONObject.toJSON(param));
+//        businessActionContext.setActionContext(map);
+//        deductBalanceAccountAction.commit(businessActionContext);
     }
 }

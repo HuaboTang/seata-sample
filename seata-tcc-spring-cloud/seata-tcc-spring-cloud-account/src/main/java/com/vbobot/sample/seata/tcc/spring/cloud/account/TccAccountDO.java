@@ -38,7 +38,8 @@ public class TccAccountDO {
     }
 
     public void commitDeduct(Integer deductAmount) {
-        Assert.isTrue(this.freezeAmount >= deductAmount, "回滚失败，冻结金额小于待回滚金额");
+        Assert.isTrue(this.freezeAmount >= deductAmount, "回滚失败，冻结金额小于待回滚金额, freeze:"
+                + this.freezeAmount + ", deduct:" + deductAmount);
         this.freezeAmount -= deductAmount;
     }
 

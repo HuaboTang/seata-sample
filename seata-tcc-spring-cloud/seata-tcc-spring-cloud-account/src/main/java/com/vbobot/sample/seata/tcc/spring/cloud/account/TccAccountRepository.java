@@ -1,7 +1,10 @@
 package com.vbobot.sample.seata.tcc.spring.cloud.account;
 
 import java.util.Optional;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,4 +15,10 @@ import org.springframework.stereotype.Repository;
 public interface TccAccountRepository extends CrudRepository<TccAccountDO, Integer> {
 
     Optional<TccAccountDO> findFirstByAccountUserId(Integer accountUSerId);
+
+    @Modifying
+    @Query("update TccAccountDO set amount = amount - :accountUserId, freezeAmount = freezeAmount + :deductAmount "
+            + "where accountUserId = :accountUserId")
+    void prepareDeductAccount(@Param("accountUserId") Integer accountUserId,
+            @Param("deductAmount") Integer deductAmount);
 }

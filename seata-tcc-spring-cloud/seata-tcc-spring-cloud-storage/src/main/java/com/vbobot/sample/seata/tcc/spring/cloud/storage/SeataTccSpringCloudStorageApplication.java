@@ -25,6 +25,12 @@ public class SeataTccSpringCloudStorageApplication implements StorageFeign {
     @Override
     public String prepareDeductStorageForCommit(DeductStorageParamDTO param) {
         storageAction.prepareDeductStorage(null, param);
+
+//        final BusinessActionContext businessActionContext = new BusinessActionContext();
+//        final HashMap<String, Object> map = Maps.newHashMap();
+//        map.put("deductStorageParam", JSONObject.toJSON(param));
+//        businessActionContext.setActionContext(map);
+//        storageAction.commit(businessActionContext);
         return "prepare";
     }
 

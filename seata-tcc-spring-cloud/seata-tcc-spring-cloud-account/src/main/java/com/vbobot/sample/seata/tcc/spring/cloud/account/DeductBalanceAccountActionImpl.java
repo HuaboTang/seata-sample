@@ -37,34 +37,39 @@ public class DeductBalanceAccountActionImpl implements DeductBalanceAccountActio
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean commit(BusinessActionContext businessActionContext) {
-        final DeductBalanceParamDTO param = ((JSONObject) businessActionContext
-                .getActionContext("deductBalanceParam"))
-                .toJavaObject(DeductBalanceParamDTO.class);
-        final Optional<TccAccountDO> oAccount = tccAccountRepository.findFirstByAccountUserId(
-                param.getAccountUserId());
-        assert oAccount.isPresent();
-        final TccAccountDO account = oAccount.get();
-        account.commitDeduct(param.getDeductValue());
-        tccAccountRepository.save(account);
-        log.info("======>commit deduct balance, account:{}, param:{}, actionContext:{}", account,
-                param, businessActionContext);
+        try {
+            final DeductBalanceParamDTO param = ((JSONObject) businessActionContext
+                    .getActionContext("deductBalanceParam"))
+                    .toJavaObject(DeductBalanceParamDTO.class);
+            tccAccountRepository.prepareDeductAccount(param.getAccountUserId(), param.getDeductValue());
+            log.info("======>commit deduct balance, account:{}, param:{}, actionContext:{}", param.getAccountUserId(),
+                    param, businessActionContext);
+            return true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
         return true;
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean rollback(BusinessActionContext businessActionContext) {
-        final DeductBalanceParamDTO param = ((JSONObject) businessActionContext
-                .getActionContext("deductBalanceParam"))
-                .toJavaObject(DeductBalanceParamDTO.class);
-        final Optional<TccAccountDO> oAccount = tccAccountRepository.findFirstByAccountUserId(
-                param.getAccountUserId());
-        assert oAccount.isPresent();
-        final TccAccountDO account = oAccount.get();
-        account.rollbackDeduct(param.getDeductValue());
-        tccAccountRepository.save(account);
-        log.info("======>rollback deduct balance, account:{}, param:{}, actionContext:{}", account,
-                param, businessActionContext);
+        try {
+            final DeductBalanceParamDTO param = ((JSONObject) businessActionContext
+                    .getActionContext("deductBalanceParam"))
+                    .toJavaObject(DeductBalanceParamDTO.class);
+            final Optional<TccAccountDO> oAccount = tccAccountRepository.findFirstByAccountUserId(
+                    param.getAccountUserId());
+            assert oAccount.isPresent();
+            final TccAccountDO account = oAccount.get();
+            account.rollbackDeduct(param.getDeductValue());
+            tccAccountRepository.save(account);
+            log.info("======>rollback deduct balance, account:{}, param:{}, actionContext:{}", account,
+                    param, businessActionContext);
+            return true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
         return true;
     }
 }

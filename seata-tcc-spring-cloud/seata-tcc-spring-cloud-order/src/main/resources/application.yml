@@ -29,7 +29,7 @@ eureka:
 
 feign:
   hystrix:
-    enabled: true
+    enabled: false
 #==================================================== Eureka-feign ====================================================
 
 logging:

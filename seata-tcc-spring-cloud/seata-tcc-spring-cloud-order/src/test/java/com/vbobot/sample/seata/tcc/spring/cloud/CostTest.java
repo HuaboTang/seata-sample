@@ -17,12 +17,14 @@ import org.junit.jupiter.api.RepeatedTest;
 public class CostTest {
 
     @RepeatedTest(value = 10)
-        public void costTest() throws InterruptedException {
+    public void costTest() throws InterruptedException {
         runCost(integer -> {
             final long begin = System.currentTimeMillis();
             final SimpleHttpResponse simpleHttpResponse = HttpClientUtils.getInst()
-                    .httpGet("http://127.0.0.1:8080/order/create/rollback");
-            System.out.println(simpleHttpResponse.getResponse() + ", cost:" + (System.currentTimeMillis() - begin));
+                    .httpGet("http://127.0.0.1:8080/order/create/commit");
+            System.out.println(
+                    simpleHttpResponse.getResponse() + ", cost:" + (System.currentTimeMillis()
+                            - begin));
         });
     }
 
