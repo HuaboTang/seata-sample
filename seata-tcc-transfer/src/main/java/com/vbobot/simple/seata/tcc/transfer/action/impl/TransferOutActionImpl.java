@@ -1,8 +1,8 @@
-package com.vbobot.simple.seata.tcc.transfer.action.impl;
+package com.vbobot.sample.seata.tcc.transfer.action.impl;
 
-import com.vbobot.simple.seata.tcc.transfer.action.TransferOutAction;
-import com.vbobot.simple.seata.tcc.transfer.dao.AccountDO;
-import com.vbobot.simple.seata.tcc.transfer.dao.AccountRepository;
+import com.vbobot.sample.seata.tcc.transfer.action.TransferOutAction;
+import com.vbobot.sample.seata.tcc.transfer.dao.AccountDO;
+import com.vbobot.sample.seata.tcc.transfer.dao.AccountRepository;
 import io.seata.core.context.RootContext;
 import io.seata.rm.tcc.api.BusinessActionContext;
 import java.util.Optional;

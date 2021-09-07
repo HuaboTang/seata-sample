@@ -1,4 +1,4 @@
-package com.vbobot.simple.seata.tcc.transfer.action;
+package com.vbobot.sample.seata.tcc.transfer.action;
 
 import io.seata.rm.tcc.api.BusinessActionContext;
 import io.seata.rm.tcc.api.BusinessActionContextParameter;

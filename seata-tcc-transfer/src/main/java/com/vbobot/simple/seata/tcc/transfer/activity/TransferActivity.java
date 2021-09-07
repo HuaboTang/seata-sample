@@ -1,7 +1,7 @@
-package com.vbobot.simple.seata.tcc.transfer.activity;
+package com.vbobot.sample.seata.tcc.transfer.activity;
 
-import com.vbobot.simple.seata.tcc.transfer.action.TransferInAction;
-import com.vbobot.simple.seata.tcc.transfer.action.TransferOutAction;
+import com.vbobot.sample.seata.tcc.transfer.action.TransferInAction;
+import com.vbobot.sample.seata.tcc.transfer.action.TransferOutAction;
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
 import javax.annotation.Resource;

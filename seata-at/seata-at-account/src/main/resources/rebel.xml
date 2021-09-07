@@ -9,7 +9,7 @@
 	<id>seata-at-account</id>
 
 	<classpath>
-		<dir name="/Users/tanghuabo/Documents/workspace/self/java/seata-simple/seata-at/seata-at-account/target/classes">
+		<dir name="/Users/tanghuabo/Documents/workspace/self/java/seata-sample/seata-at/seata-at-account/target/classes">
 		</dir>
 	</classpath>
 

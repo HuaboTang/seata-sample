@@ -10,8 +10,8 @@
         <version>1.1.0</version>
     </parent>
 
-    <groupId>com.vbobot.simple</groupId>
-    <artifactId>seata-simple</artifactId>
+    <groupId>com.vbobot.sample</groupId>
+    <artifactId>seata-sample</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 

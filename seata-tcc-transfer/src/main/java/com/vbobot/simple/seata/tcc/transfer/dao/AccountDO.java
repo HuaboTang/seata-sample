@@ -1,4 +1,4 @@
-package com.vbobot.simple.seata.tcc.transfer.dao;
+package com.vbobot.sample.seata.tcc.transfer.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

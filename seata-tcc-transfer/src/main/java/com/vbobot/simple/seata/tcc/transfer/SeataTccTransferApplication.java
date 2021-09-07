@@ -1,6 +1,6 @@
-package com.vbobot.simple.seata.tcc.transfer;
+package com.vbobot.sample.seata.tcc.transfer;
 
-import com.vbobot.simple.seata.tcc.transfer.activity.TransferActivity;
+import com.vbobot.sample.seata.tcc.transfer.activity.TransferActivity;
 import javax.annotation.Resource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

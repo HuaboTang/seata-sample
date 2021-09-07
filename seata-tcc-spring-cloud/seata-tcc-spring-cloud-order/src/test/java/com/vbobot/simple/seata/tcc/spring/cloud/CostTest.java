@@ -1,4 +1,4 @@
-package com.vbobot.simple.seata.tcc.spring.cloud;
+package com.vbobot.sample.seata.tcc.spring.cloud;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.vbobot.common.utils.http.HttpClientUtils;
@@ -17,11 +17,12 @@ import org.junit.jupiter.api.RepeatedTest;
 public class CostTest {
 
     @RepeatedTest(value = 10)
-    public void costTest() throws InterruptedException {
+        public void costTest() throws InterruptedException {
         runCost(integer -> {
+            final long begin = System.currentTimeMillis();
             final SimpleHttpResponse simpleHttpResponse = HttpClientUtils.getInst()
-                    .httpGet("http://127.0.0.1:8080/order/create/commit");
-            System.out.println(simpleHttpResponse.getResponse());
+                    .httpGet("http://127.0.0.1:8080/order/create/rollback");
+            System.out.println(simpleHttpResponse.getResponse() + ", cost:" + (System.currentTimeMillis() - begin));
         });
     }
 

@@ -1,4 +1,4 @@
-package com.vbobot.simple.seata.tcc.transfer.dao;
+package com.vbobot.sample.seata.tcc.transfer.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

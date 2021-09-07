@@ -15,7 +15,7 @@ seata:
   # 是否开启spring-boot 自动装配 default true
   enabled: true
   application-id: ${spring.application.name}
-  tx-service-group: seata-tcc-simple
+  tx-service-group: seata-tcc-sample
   # 是否开启数据源自动代理
   enable-auto-data-source-proxy: true
   data-source-proxy-mode: AT
@@ -84,9 +84,9 @@ seata:
     #3.为什么这么设计，不直接取服务名？
     #这里多了一层获取事务分组到映射集群的配置。这样设计后，事务分组可以作为资源的逻辑隔离单位，当发生故障时可以快速failover。
     vgroup-mapping:
-      seata-tcc-simple: seata-tcc-simple
+      seata-tcc-sample: seata-tcc-sample
     grouplist:
-      seata-tcc-simple: 127.0.0.1:8091
+      seata-tcc-sample: 127.0.0.1:8091
     enable-degrade: false
     disable-global-transaction: false
   transport:
