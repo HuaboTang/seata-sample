@@ -24,7 +24,7 @@ eureka:
   client:
     enabled: true
     service-url:
-      defaultZone: http://120.76.201.127:8761/eureka
+      defaultZone: http://eureka.test.com:8761/eureka
     registry-fetch-interval-seconds: 5
 
 feign:

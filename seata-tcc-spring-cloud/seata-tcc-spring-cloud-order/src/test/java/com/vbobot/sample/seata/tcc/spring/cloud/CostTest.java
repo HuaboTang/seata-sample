@@ -21,7 +21,7 @@ public class CostTest {
         runCost(integer -> {
             final long begin = System.currentTimeMillis();
             final SimpleHttpResponse simpleHttpResponse = HttpClientUtils.getInst()
-                    .httpGet("http://127.0.0.1:8080/order/create/commit");
+                    .httpGet("http://127.0.0.1:8080/order/create/rollback");
             System.out.println(
                     simpleHttpResponse.getResponse() + ", cost:" + (System.currentTimeMillis()
                             - begin));

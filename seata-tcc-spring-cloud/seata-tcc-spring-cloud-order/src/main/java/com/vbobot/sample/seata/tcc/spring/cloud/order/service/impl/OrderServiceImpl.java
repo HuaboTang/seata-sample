@@ -68,10 +68,21 @@ public class OrderServiceImpl implements OrderService {
         deductParam.setDeductValue(100);
         accountFeign.prepareDeductBalance(deductParam);
 
+        final DeductBalanceParamDTO deductParam2 = new DeductBalanceParamDTO();
+        deductParam2.setAccountUserId(200);
+        deductParam2.setDeductValue(100);
+        accountFeign.prepareDeductBalance(deductParam2);
+
         final DeductStorageParamDTO deductStorageParam = new DeductStorageParamDTO();
         deductStorageParam.setGoodsId(200);
         deductStorageParam.setAccountUserId(100);
         deductStorageParam.setDeductStorage(1);
-        storageFeign.prepareDeductStorageForRollback(deductStorageParam);
+        storageFeign.prepareDeductStorageForCommit(deductStorageParam);
+
+        final DeductStorageParamDTO deductStorageParam2 = new DeductStorageParamDTO();
+        deductStorageParam2.setGoodsId(300);
+        deductStorageParam2.setAccountUserId(200);
+        deductStorageParam2.setDeductStorage(1);
+        storageFeign.prepareDeductStorageForRollback(deductStorageParam2);
     }
 }
