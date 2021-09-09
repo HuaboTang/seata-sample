@@ -21,12 +21,25 @@ import org.junit.jupiter.api.RepeatedTest;
 public class CostTest {
 
     @RepeatedTest(value = 10)
-    public void costTest() throws InterruptedException {
+    public void testForCommit() throws InterruptedException {
         final AtomicInteger failCount = new AtomicInteger(0);
         runCost(integer -> {
             final SimpleHttpResponse simpleHttpResponse = HttpClientUtils.getInst()
                     .httpGet("http://127.0.0.1:8080/order/create/commit");
             if (!Objects.equals("create-order-commit", simpleHttpResponse.getResponse())) {
+                failCount.incrementAndGet();
+            }
+        });
+        assertEquals(0, failCount.get());
+    }
+
+    @RepeatedTest(value = 10)
+    public void testForRollBack() throws InterruptedException {
+        final AtomicInteger failCount = new AtomicInteger(0);
+        runCost(integer -> {
+            final SimpleHttpResponse simpleHttpResponse = HttpClientUtils.getInst()
+                    .httpGet("http://127.0.0.1:8080/order/create/rollback");
+            if (!Objects.equals("create-order-rollback", simpleHttpResponse.getResponse())) {
                 failCount.incrementAndGet();
             }
         });
