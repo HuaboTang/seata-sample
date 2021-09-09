@@ -24,14 +24,9 @@ public class DeductBalanceAccountActionImpl implements DeductBalanceAccountActio
     @Transactional(rollbackFor = Exception.class)
     public void prepareDeductBalance(BusinessActionContext businessActionContext,
             DeductBalanceParamDTO param) {
-        final Optional<TccAccountDO> oAccount = tccAccountRepository.findFirstByAccountUserId(
-                param.getAccountUserId());
-        assert oAccount.isPresent();
-        final TccAccountDO account = oAccount.get();
-        account.prepareDeduct(param.getDeductValue());
-        tccAccountRepository.save(account);
-        log.info("======>prepare deduct balance, account:{}, param:{}, actionContext:{}", account,
-                param, businessActionContext);
+        tccAccountRepository.prepareDeductAccount(param.getAccountUserId(), param.getDeductValue());
+//        log.info("======>prepare deduct balance, param:{}, actionContext:{}",
+//                param, businessActionContext);
     }
 
     @Override
@@ -41,9 +36,9 @@ public class DeductBalanceAccountActionImpl implements DeductBalanceAccountActio
             final DeductBalanceParamDTO param = ((JSONObject) businessActionContext
                     .getActionContext("deductBalanceParam"))
                     .toJavaObject(DeductBalanceParamDTO.class);
-            tccAccountRepository.prepareDeductAccount(param.getAccountUserId(), param.getDeductValue());
-            log.info("======>commit deduct balance, account:{}, param:{}, actionContext:{}", param.getAccountUserId(),
-                    param, businessActionContext);
+            tccAccountRepository.commitDeductAccount(param.getAccountUserId(), param.getDeductValue());
+//            log.info("======>commit deduct balance, account:{}, param:{}, actionContext:{}", param.getAccountUserId(),
+//                    param, businessActionContext);
             return true;
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -64,8 +59,8 @@ public class DeductBalanceAccountActionImpl implements DeductBalanceAccountActio
             final TccAccountDO account = oAccount.get();
             account.rollbackDeduct(param.getDeductValue());
             tccAccountRepository.save(account);
-            log.info("======>rollback deduct balance, account:{}, param:{}, actionContext:{}", account,
-                    param, businessActionContext);
+//            log.info("======>rollback deduct balance, account:{}, param:{}, actionContext:{}", account,
+//                    param, businessActionContext);
             return true;
         } catch (Exception exception) {
             exception.printStackTrace();

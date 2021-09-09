@@ -29,6 +29,7 @@
         <module>seata-at</module>
         <module>seata-tcc-transfer</module>
       <module>seata-tcc-spring-cloud</module>
+      <module>seata-common</module>
     </modules>
 
     <dependencyManagement>

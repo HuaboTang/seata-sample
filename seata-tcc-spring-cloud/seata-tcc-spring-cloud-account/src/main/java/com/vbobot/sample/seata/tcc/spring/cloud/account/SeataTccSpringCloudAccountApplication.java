@@ -2,7 +2,6 @@ package com.vbobot.sample.seata.tcc.spring.cloud.account;
 
 import com.vbobot.sample.seata.tcc.spring.cloud.feign.AccountFeign;
 import com.vbobot.sample.seata.tcc.spring.cloud.feign.DeductBalanceParamDTO;
-import io.seata.core.context.RootContext;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -28,7 +27,7 @@ public class SeataTccSpringCloudAccountApplication implements AccountFeign {
 
     @Override
     public void prepareDeductBalance(DeductBalanceParamDTO param) {
-        log.info("=====>PrepareDeductBalance, xid:{}", RootContext.getXID());
+//        log.info("=====>PrepareDeductBalance, xid:{}", RootContext.getXID());
         deductBalanceAccountAction.prepareDeductBalance(null, param);
 
 //        final BusinessActionContext businessActionContext = new BusinessActionContext();

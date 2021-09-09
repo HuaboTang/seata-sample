@@ -34,11 +34,10 @@ feign:
 
 logging:
   level:
-    io.seata.core.rpc.processor.client.ClientHeartbeatProcessor: INFO
-    io.seata.core.rpc.netty: INFO
-    org: INFO
+    io.seata: WARN
+    com.alibaba.cloud.seata.web.SeataHandlerInterceptor: ERROR
     com.alibaba.cloud.seata: INFO
-    io.seata: INFO
+    org: INFO
     com.vbobot.sample.seata.tcc.spring.cloud: INFO
     com.hystrix: DEBUG
 

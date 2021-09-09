@@ -21,4 +21,8 @@ public interface TccAccountRepository extends CrudRepository<TccAccountDO, Integ
             + "where accountUserId = :accountUserId")
     void prepareDeductAccount(@Param("accountUserId") Integer accountUserId,
             @Param("deductAmount") Integer deductAmount);
+
+    @Modifying
+    @Query("update TccAccountDO  set freezeAmount = freezeAmount - :deductAmount where accountUserId = :accountUserId")
+    void commitDeductAccount(@Param("accountUserId") Integer accountUserId, @Param("deductAmount") Integer deductAmount);
 }

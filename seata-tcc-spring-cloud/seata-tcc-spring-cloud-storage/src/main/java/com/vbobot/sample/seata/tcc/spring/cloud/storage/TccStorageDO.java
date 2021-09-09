@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
-import org.springframework.util.Assert;
 
 /**
  * @author Bobo
@@ -30,21 +29,4 @@ public class TccStorageDO {
 
     @Column
     private Integer freezeStock;
-
-    public void prepareDeduct(Integer deductStock) {
-        Assert.isTrue(this.stock > deductStock);
-        this.stock -= deductStock;
-        this.freezeStock += deductStock;
-    }
-
-    public void commitDeduct(Integer deductStock) {
-        Assert.isTrue(this.freezeStock >= deductStock, "freezeStock less than deductStock");
-        this.freezeStock -= deductStock;
-    }
-
-    public void rollbackDeduct(Integer deductStock) {
-        Assert.isTrue(this.freezeStock >= deductStock, "freezeStock less than deductStock");
-        this.freezeStock -= deductStock;
-        this.stock += deductStock;
-    }
 }
